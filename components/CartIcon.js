@@ -2,10 +2,11 @@ import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import cartStore from '../stores/cartStore';
 
-export function CartIcon() {
+export function CartIcon({navigation}) {
   return (
     <TouchableOpacity
-      onPress={() => {}}
+      onPress={() => {navigation.navigate('Cart')}}
+      // onPress={() => {navigation.navigate('Detail', { productId: product.id, title: product.name })}
     >
       <View style={styles.container}>
         <Text style={styles.text} onPress={() => {}}>

@@ -1,23 +1,26 @@
 import React from 'react';
-import { FlatList, StyleSheet } from 'react-native';
-
+import { FlatList, StyleSheet, View } from 'react-native';
 import productStore from '../stores/productStore.js';
+import { CartIcon } from './CartIcon.js';
 import { Product } from './Product.js';
 
-export function ProductsList() {
+
+export function ProductsList({navigation}) {
   const products = productStore.getProducts();
 
   function renderProduct({ item: product }) {
-    return <Product product={product} onPress={() => {}} />;
+    return <Product product={product} onPress={() => {navigation.navigate('Detail', { productId: product.id, title: product.name })}} />;
   }
 
   return (
-    <FlatList
-      style={styles.productsList}
-      contentContainerStyle={styles.productsListContainer}
-      data={products}
-      renderItem={renderProduct}
-    />
+    <View>
+        <FlatList
+          style={styles.productsList}
+          contentContainerStyle={styles.productsListContainer}
+          data={products}
+          renderItem={renderProduct}
+        />
+    </View>
   );
 }
 
